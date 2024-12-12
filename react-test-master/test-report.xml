@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="C:\Users\cristianbetancourth\Desktop\Semillero\Entregables\Mes 3\Jenkins Shraed Libreries\reto_jenkins\react-test\src\__test__\date.test.js">
+    <testCase name="compareDate should return true if the second date is greater than the first date" duration="21"/>
+  </file>
+  <file path="C:\Users\cristianbetancourth\Desktop\Semillero\Entregables\Mes 3\Jenkins Shraed Libreries\reto_jenkins\react-test\src\__test__\util.test.js">
+    <testCase name="totalPrice should return 0 when no product is passed" duration="21"/>
+    <testCase name="totalPrice should return the total price of a single product" duration="1"/>
+    <testCase name="totalPrice should return the total price of multiple products" duration="0"/>
+  </file>
+  <file path="C:\Users\cristianbetancourth\Desktop\Semillero\Entregables\Mes 3\Jenkins Shraed Libreries\reto_jenkins\react-test\src\__test__\indexOrdersCard.test.js">
+    <testCase name="OrdersCard renders with default props" duration="75"/>
+    <testCase name="OrdersCard renders with provided props" duration="12"/>
+  </file>
+  <file path="C:\Users\cristianbetancourth\Desktop\Semillero\Entregables\Mes 3\Jenkins Shraed Libreries\reto_jenkins\react-test\src\__test__\indexContext.test.js">
+    <testCase name="ShoppingCartProvider renders children and provides context values" duration="148"/>
+    <testCase name="ShoppingCartProvider updates context values correctly" duration="9"/>
+  </file>
+  <file path="C:\Users\cristianbetancourth\Desktop\Semillero\Entregables\Mes 3\Jenkins Shraed Libreries\reto_jenkins\react-test\src\__test__\indexCard.test.js">
+    <testCase name="renders Card component" duration="202"/>
+    <testCase name="adds product to cart when clicking the PlusIcon" duration="61"/>
+  </file>
+</testExecutions>
