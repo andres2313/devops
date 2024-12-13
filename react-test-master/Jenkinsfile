@@ -1,5 +1,2 @@
 @Library('devops@feature') _
-pipelineGeneral(
-    import lb_analisissonarqube
-    import lb_buildartefacto
-)
+pipelineGeneral()
