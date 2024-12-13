@@ -1,4 +1,4 @@
-package src.org.devops
+package org.devops
 
 def testCoverage(){
     sh 'npm test'
