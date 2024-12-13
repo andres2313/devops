@@ -10,10 +10,14 @@ def call(Map config) {
             stage('Initialize Environment') {
                 steps {
                     script {
+                        // Validar si config.repoUrl y config.branch tienen valores; si no, usar predeterminados
+                        def repoUrl = config.repoUrl ?: 'https://github.com/default/repository.git'
+                        def branch = config.branch ?: 'main'
+
                         // Calcular y asignar variables de entorno
-                        env.PROJECT_NAME = config.repoUrl.tokenize('/').last().replace('.git', '')
-                        env.GIT_BRANCH_1 = config.branch ?: 'main'
-                        env.GIT_URL_1 = config.repoUrl ?: 'src'
+                        env.PROJECT_NAME = repoUrl.tokenize('/').last().replace('.git', '')
+                        env.GIT_BRANCH_1 = branch
+                        env.GIT_URL_1 = repoUrl
 
                         echo "Variables de entorno inicializadas:"
                         echo "PROJECT_NAME: ${env.PROJECT_NAME}"
@@ -27,7 +31,9 @@ def call(Map config) {
                 steps {
                     script {
                         echo "Clonando el repositorio: ${env.GIT_URL_1}"
-                        org.devops.lb_buildartefacto.clone()
+
+                        // Llamada al método clone de la biblioteca compartida
+                        org.devops.lb_buildartefacto.clone(env.GIT_URL_1, env.GIT_BRANCH_1)
                     }
                 }
             }
@@ -36,17 +42,9 @@ def call(Map config) {
                 steps {
                     script {
                         echo "Instalando dependencias..."
+
+                        // Llamada al método install de la biblioteca compartida
                         org.devops.lb_buildartefacto.install()
-                    }
-                }
-            }
-            
-            stage('Build Artefact') {
-                steps {
-                    script {
-                        echo "Construyendo el artefacto..."
-                        org.devops.lb_buildartefacto.build()
-                        org.devops.lb_buildartefacto.generateArtefact()
                     }
                 }
             }
@@ -55,6 +53,8 @@ def call(Map config) {
                 steps {
                     script {
                         echo "Ejecutando pruebas y generando cobertura..."
+
+                        // Llamada al método testCoverage de la biblioteca compartida
                         org.devops.lb_analisissonarqube.testCoverage()
                     }
                 }
@@ -64,6 +64,8 @@ def call(Map config) {
                 steps {
                     script {
                         echo "Iniciando análisis con SonarQube..."
+
+                        // Llamada al método analisisSonar de la biblioteca compartida
                         org.devops.lb_analisissonarqube.analisisSonar(env.PROJECT_NAME)
                     }
                 }
