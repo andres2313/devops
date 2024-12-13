@@ -12,7 +12,7 @@ def call(Map config) {
                 steps {
                     script {
                         echo "Clonando el repositorio: ${env.GIT_URL_1}"
-                        org.devops.lb_buildartefacto.clone()
+                        lb_buildartefacto.clone()
                     }
                 }
             }
@@ -24,7 +24,7 @@ def call(Map config) {
                         sh 'node -v'
                         sh 'npm -v'
                         echo "Instalando dependencias..."
-                        org.devops.lb_buildartefacto.install()
+                        lb_buildartefacto.install()
                      }
                 }
             }
@@ -34,7 +34,7 @@ def call(Map config) {
                     script {
                         echo "Ejecutando pruebas y generando cobertura:"
                         sh 'ls -l' // Muestra el contenido del directorio para verificar
-                        org.devops.lb_analisissonarqube.testCoverage()
+                        lb_analisissonarqube.testCoverage()
                     }
                 }
             }
@@ -45,7 +45,7 @@ def call(Map config) {
                         echo "Validando configuración de SonarQube:"
                         sh 'which sonar-scanner'
                         echo "Iniciando análisis..."
-                        org.devops.lb_analisissonarqube.analisisSonar(env.GIT_BRANCH_1)
+                        lb_analisissonarqube.analisisSonar(env.GIT_BRANCH_1)
                     }
                 }
             }
