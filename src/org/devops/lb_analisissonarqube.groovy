@@ -7,7 +7,7 @@ def testCoverage(){
 def analisisSonar(gitName){
     def scannerHome = tool 'sonar-scanner'
     if(scannerHome){
-        withSonarQubeEnv('SonarQube-scanner'){
+        withSonarQubeEnv('sonar-scanner'){
             sh "${scannerHome}/bin/sonar-scanner \
             -Dsonar.projectKey=${gitName} \
             -Dsonar.projectName=${gitName} \
