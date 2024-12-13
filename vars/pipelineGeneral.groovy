@@ -7,12 +7,15 @@ def call(Map config) {
         }
 
         stages {
-
             stage('Clone Repository') {
                 steps {
                     script {
                         echo "Clonando el repositorio: ${env.GIT_URL_1}"
-                        src.org.devops.lb_buildartefacto.clone()
+                        org.devops.lb_buildartefacto.clone()
+
+                        // Verificar que package.json esté presente
+                        sh 'ls -l'  // Listar los archivos en el directorio actual
+                        sh 'cat package.json'  // Mostrar el contenido del package.json para asegurarnos de que está allí
                     }
                 }
             }
@@ -21,8 +24,15 @@ def call(Map config) {
                 steps {
                     script {
                         echo "Instalando dependencias..."
+                        
+                        // Verificar si npm está disponible
+                        sh 'npm --version'  // Verificar la versión de npm
+
                         // Llamada al método install de la biblioteca compartida
-                        src.org.devops.lb_buildartefacto.install()
+                        org.devops.lb_buildartefacto.install()
+
+                        // Ejecutar npm install con salida detallada para depuración
+                        sh 'npm install --verbose'  // Esto ayudará a ver más detalles si algo falla
                     }
                 }
             }
@@ -33,7 +43,7 @@ def call(Map config) {
                         echo "Ejecutando pruebas y generando cobertura..."
 
                         // Llamada al método testCoverage de la biblioteca compartida
-                        src.org.devops.lb_analisissonarqube.testCoverage()
+                        org.devops.lb_analisissonarqube.testCoverage()
                     }
                 }
             }
@@ -44,7 +54,7 @@ def call(Map config) {
                         echo "Iniciando análisis con SonarQube..."
 
                         // Llamada al método analisisSonar de la biblioteca compartida
-                        src.org.devops.lb_analisissonarqube.analisisSonar(env.GIT_BRANCH_1)
+                        org.devops.lb_analisissonarqube.analisisSonar(env.GIT_BRANCH_1)
                     }
                 }
             }
