@@ -14,7 +14,7 @@ def call(Map config) {
                 steps {
                     script {
                         // Validar si config.repoUrl y config.branch tienen valores; si no, usar predeterminados
-                        def repoUrl = config.repoUrl ?: 'https://github.com/default/repository.git'
+                        def repoUrl = config.repoUrl ?: 'https://github.com/andres2313/repository.git'
                         def branch = config.branch ?: 'main'
 
                         // Calcular y asignar variables de entorno
