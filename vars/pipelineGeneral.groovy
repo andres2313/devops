@@ -10,32 +10,11 @@ def call(Map config) {
         }
 
         stages {
-            stage('Initialize Environment') {
-                steps {
-                    script {
-                        // Validar si config.repoUrl y config.branch tienen valores; si no, usar predeterminados
-                        def repoUrl = config.repoUrl ?: 'https://github.com/andres2313/devops.git'
-                        def branch = config.branch ?: 'main'
-
-                        // Calcular y asignar variables de entorno
-                        env.PROJECT_NAME = repoUrl.tokenize('/').last().replace('.git', '')
-                        env.GIT_BRANCH_1 = branch
-                        env.GIT_URL_1 = repoUrl
-
-                        echo "Variables de entorno inicializadas:"
-                        echo "PROJECT_NAME: ${env.PROJECT_NAME}"
-                        echo "GIT_BRANCH_1: ${env.GIT_BRANCH_1}"
-                        echo "GIT_URL_1: ${env.GIT_URL_1}"
-                    }
-                }
-            }
 
             stage('Clone Repository') {
                 steps {
                     script {
                         echo "Clonando el repositorio: ${env.GIT_URL_1}"
-
-                        // Llamada al método clone de la biblioteca compartida
                         org.devops.lb_buildartefacto.clone()
                     }
                 }
@@ -69,7 +48,7 @@ def call(Map config) {
                         echo "Iniciando análisis con SonarQube..."
 
                         // Llamada al método analisisSonar de la biblioteca compartida
-                        org.devops.lb_analisissonarqube.analisisSonar(env.PROJECT_NAME)
+                        org.devops.lb_analisissonarqube.analisisSonar(env.GIT_BRANCH_1)
                     }
                 }
             }
