@@ -42,17 +42,7 @@ def call(Map config) {
                     }
                 }
             }
-
-            stage('Build Artefact') {
-                steps {
-                    script {
-                        echo "Construyendo el artefacto..."
-                        org.devops.lb_buildartefacto.build()
-                        org.devops.lb_buildartefacto.generateArtefact()
-                    }
-                }
-            }
-
+            
             stage('Run Tests and Coverage') {
                 steps {
                     script {
