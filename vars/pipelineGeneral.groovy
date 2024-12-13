@@ -13,14 +13,12 @@ def call(Map config) {
                         // Calcular y asignar variables de entorno
                         env.PROJECT_NAME = config.repoUrl.tokenize('/').last().replace('.git', '')
                         env.GIT_BRANCH_1 = config.branch ?: 'main'
-                        env.GIT_URL_1 = config.repoUrl
-                        env.SOURCE_PATH = config.sourcePath ?: 'src'
+                        env.GIT_URL_1 = config.repoUrl ?: 'src'
 
                         echo "Variables de entorno inicializadas:"
                         echo "PROJECT_NAME: ${env.PROJECT_NAME}"
                         echo "GIT_BRANCH_1: ${env.GIT_BRANCH_1}"
                         echo "GIT_URL_1: ${env.GIT_URL_1}"
-                        echo "SOURCE_PATH: ${env.SOURCE_PATH}"
                     }
                 }
             }
