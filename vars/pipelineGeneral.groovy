@@ -1,3 +1,4 @@
+@Library('../src/org/devops')
 def call(Map config) {
     pipeline {
         agent any // Puede ejecutarse en cualquier agente disponible
