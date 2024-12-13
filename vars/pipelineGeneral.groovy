@@ -1,4 +1,4 @@
-@Library('../src/org/devops')
+@Library('lb_analisissonarqube.groovy')
 def call(Map config) {
     pipeline {
         agent any // Puede ejecutarse en cualquier agente disponible
