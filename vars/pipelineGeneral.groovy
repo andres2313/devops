@@ -19,19 +19,21 @@ def call(Map config) {
 
             stage('Install Dependencies') {
                 steps {
-                    script {
+                     script {
+                        echo "Verificando Node.js y npm:"
+                        sh 'node -v'
+                        sh 'npm -v'
                         echo "Instalando dependencias..."
-                        // Llamada al método install de la biblioteca compartida
                         org.devops.lb_buildartefacto.install()
-                    }
+                     }
                 }
             }
 
             stage('Run Tests and Coverage') {
                 steps {
                     script {
-                        echo "Ejecutando pruebas y generando cobertura..."
-                        // Llamada al método testCoverage de la biblioteca compartida
+                        echo "Ejecutando pruebas y generando cobertura:"
+                        sh 'ls -l' // Muestra el contenido del directorio para verificar
                         org.devops.lb_analisissonarqube.testCoverage()
                     }
                 }
@@ -40,9 +42,9 @@ def call(Map config) {
             stage('SonarQube Analysis') {
                 steps {
                     script {
-                        echo "Iniciando análisis con SonarQube..."
-
-                        // Llamada al método analisisSonar de la biblioteca compartida
+                        echo "Validando configuración de SonarQube:"
+                        sh 'which sonar-scanner'
+                        echo "Iniciando análisis..."
                         org.devops.lb_analisissonarqube.analisisSonar(env.GIT_BRANCH_1)
                     }
                 }
