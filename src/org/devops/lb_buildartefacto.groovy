@@ -5,5 +5,5 @@ def clone(){
 }
 
 def install(){
-    bat 'npm install'
+    sh 'npm install'
 }
