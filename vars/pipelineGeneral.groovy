@@ -12,7 +12,7 @@ def call(Map config) {
                 steps {
                     script {
                         echo "Clonando el repositorio: ${env.GIT_URL_1}"
-                        org.devops.lb_buildartefacto.clone()
+                        src.org.devops.lb_buildartefacto.clone()
                     }
                 }
             }
@@ -22,7 +22,7 @@ def call(Map config) {
                     script {
                         echo "Instalando dependencias..."
                         // Llamada al método install de la biblioteca compartida
-                        org.devops.lb_buildartefacto.install()
+                        src.org.devops.lb_buildartefacto.install()
                     }
                 }
             }
@@ -33,7 +33,7 @@ def call(Map config) {
                         echo "Ejecutando pruebas y generando cobertura..."
 
                         // Llamada al método testCoverage de la biblioteca compartida
-                        org.devops.lb_analisissonarqube.testCoverage()
+                        src.org.devops.lb_analisissonarqube.testCoverage()
                     }
                 }
             }
@@ -44,7 +44,7 @@ def call(Map config) {
                         echo "Iniciando análisis con SonarQube..."
 
                         // Llamada al método analisisSonar de la biblioteca compartida
-                        org.devops.lb_analisissonarqube.analisisSonar(env.GIT_BRANCH_1)
+                        src.org.devops.lb_analisissonarqube.analisisSonar(env.GIT_BRANCH_1)
                     }
                 }
             }
