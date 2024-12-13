@@ -1,4 +1,8 @@
 @Library('devops@feature') _
+
+import org.devops.lb_analisissonarqube
+import org.devops.lb_buildartefacto
+
 pipelineGeneral(
     config: [
         repoUrl: 'https://github.com/andres2313/devops.git',
