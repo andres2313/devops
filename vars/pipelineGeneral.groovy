@@ -18,8 +18,8 @@ def call(Map config) {
 
                         echo "Variables de entorno inicializadas:"
                         echo "PROJECT_NAME: ${env.PROJECT_NAME}"
-                        echo "GIT_BRANCH: ${env.GIT_BRANCH_1}"
-                        echo "GIT_REPO_URL: ${env.GIT_URL_1}"
+                        echo "GIT_BRANCH_1: ${env.GIT_BRANCH_1}"
+                        echo "GIT_URL_1: ${env.GIT_URL_1}"
                         echo "SOURCE_PATH: ${env.SOURCE_PATH}"
                     }
                 }
@@ -42,6 +42,16 @@ def call(Map config) {
                     }
                 }
             }
+            
+            stage('Build Artefact') {
+                steps {
+                    script {
+                        echo "Construyendo el artefacto..."
+                        org.devops.lb_buildartefacto.build()
+                        org.devops.lb_buildartefacto.generateArtefact()
+                    }
+                }
+            }
 
             stage('Run Tests and Coverage') {
                 steps {
