@@ -1,6 +1,3 @@
-import org.devops.lb_analisissonarqube
-import org.devops.lb_buildartefacto
-
 def call(Map config) {
     pipeline {
         agent any // Puede ejecutarse en cualquier agente disponible
@@ -24,7 +21,6 @@ def call(Map config) {
                 steps {
                     script {
                         echo "Instalando dependencias..."
-
                         // Llamada al método install de la biblioteca compartida
                         org.devops.lb_buildartefacto.install()
                     }
