@@ -1,6 +1,3 @@
-import lb_analisissonarqube
-import lb_buildartefacto
-
 def call(Map config) {
     pipeline {
         agent any // Puede ejecutarse en cualquier agente disponible
