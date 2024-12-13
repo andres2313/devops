@@ -1,2 +1,6 @@
 @Library('devops@feature') _
-pipelineGeneral()
+pipelineGeneral(
+    config: [
+        repoUrl: 'https://github.com/andres2313/devops.git',
+        branch: 'feature'
+    ])
