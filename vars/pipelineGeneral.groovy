@@ -1,4 +1,5 @@
-@Library('devops@feature') _
+import lb_analisissonarqube
+import lb_buildartefacto
 
 def call(Map config) {
     pipeline {
