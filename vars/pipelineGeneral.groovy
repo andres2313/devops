@@ -50,8 +50,8 @@ def call(Map config) {
                         org.devops.lb_buildartefacto.build()
                         org.devops.lb_buildartefacto.generateArtefact()
                     }
-                }
-            }
+                }
+            }
 
             stage('Run Tests and Coverage') {
                 steps {
