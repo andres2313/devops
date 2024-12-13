@@ -33,7 +33,7 @@ def call(Map config) {
                         echo "Clonando el repositorio: ${env.GIT_URL_1}"
 
                         // Llamada al método clone de la biblioteca compartida
-                        org.devops.lb_buildartefacto.clone(env.GIT_URL_1, env.GIT_BRANCH_1)
+                        org.devops.lb_buildartefacto.clone()
                     }
                 }
             }
