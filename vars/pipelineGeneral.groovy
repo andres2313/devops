@@ -1,5 +1,4 @@
-import '../src/org/devops/lb_analisissonarqube'
-import '../src/org/devops/lb_buildartefacto'
+@Library('devops@feature') _
 
 def call(Map config) {
     pipeline {
