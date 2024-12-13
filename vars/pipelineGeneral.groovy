@@ -6,15 +6,25 @@ def call(Map config) {
             nodejs 'NodeJS' // Asegúrate de tener NodeJS configurado en Jenkins
         }
 
-        environment {
-            // Toma automáticamente el nombre del proyecto desde la URL del repositorio
-            PROJECT_NAME = config.repoUrl.tokenize('/').last().replace('.git', '')
-            GIT_BRANCH = config.branch ?: 'main'
-            GIT_REPO_URL = config.repoUrl
-            SOURCE_PATH = config.sourcePath ?: 'src'
-        }
-
         stages {
+            stage('Initialize Environment') {
+                steps {
+                    script {
+                        // Calcular y asignar variables de entorno
+                        env.PROJECT_NAME = config.repoUrl.tokenize('/').last().replace('.git', '')
+                        env.GIT_BRANCH = config.branch ?: 'main'
+                        env.GIT_REPO_URL = config.repoUrl
+                        env.SOURCE_PATH = config.sourcePath ?: 'src'
+
+                        echo "Variables de entorno inicializadas:"
+                        echo "PROJECT_NAME: ${env.PROJECT_NAME}"
+                        echo "GIT_BRANCH: ${env.GIT_BRANCH}"
+                        echo "GIT_REPO_URL: ${env.GIT_REPO_URL}"
+                        echo "SOURCE_PATH: ${env.SOURCE_PATH}"
+                    }
+                }
+            }
+
             stage('Clone Repository') {
                 steps {
                     script {
