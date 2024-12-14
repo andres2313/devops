@@ -1,11 +1,9 @@
 package org.devops
 
-class lb_buildartefacto {
-    static def clone() {
+def clone() {
         git branch: "${env.GIT_BRANCH_1}", url: "${env.GIT_URL_1}"
-    }
+}
 
-    static def install() {
+def install() {
         sh 'npm install'
-    }
 }
