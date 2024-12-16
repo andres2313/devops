@@ -22,7 +22,7 @@ def call(Map config) {
                 steps {
                     checkout scm
                     sh 'ls -la'
-                }
+                }
             }
 
             stage('Correr el test para analisis en sonarqube') {
