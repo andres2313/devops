@@ -26,6 +26,14 @@ def call(Map config) {
                 }
             }
 
+            stage('Build') {
+                steps {
+                    script {
+                        lb_buildartefacto.build()
+                    }
+                }
+            }
+
             stage('SonarQube Analysis') {
                 steps {
                     script {
