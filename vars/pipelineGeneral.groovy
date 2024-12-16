@@ -18,6 +18,13 @@ def call(Map config) {
                 }
             }
 
+            stage ('mirar algo'){
+                steps {
+                    checkout scm
+                    sh 'ls -la'
+                }
+            }
+
             stage('Correr el test para analisis en sonarqube') {
                 steps {
                     script {
