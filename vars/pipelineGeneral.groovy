@@ -1,56 +1,44 @@
+import org.devops.lb_buildartefacto
+import org.devops.lb_analisissonarqube
+
 def call(Map config) {
+    def lb_buildartefacto = new lb_buildartefacto()
+    def lb_analisissonarqube = new lb_analisissonarqube()
     pipeline {
-        agent any // Puede ejecutarse en cualquier agente disponible
-
+        agent any 
         tools {
-            nodejs 'NodeJS' // Asegúrate de tener NodeJS configurado en Jenkins
+            nodejs 'NodeJS' 
         }
-
         stages {
-
-            stage('Clone Repository') {
+            stage('Clonar repositorio') {
                 steps {
                     script {
-                        echo "Clonando el repositorio: ${env.GIT_URL_1}"
                         lb_buildartefacto.clone()
                     }
                 }
             }
-
-            stage('Install Dependencies') {
-                steps {
-                     script {
-                        echo "Verificando Node.js y npm:"
-                        sh 'node -v'
-                        sh 'npm -v'
-                        echo "Instalando dependencias..."
-                        lb_buildartefacto.install()
-                     }
-                }
-            }
-
-            stage('Run Tests and Coverage') {
+            stage('Build') {
                 steps {
                     script {
-                        echo "Ejecutando pruebas y generando cobertura:"
-                        sh 'ls -l' // Muestra el contenido del directorio para verificar
+                        lb_buildartefacto.build()
+                    }
+                }
+            }
+            stage('Correr el test para analisis en sonarqube') {
+                steps {
+                    script {
                         lb_analisissonarqube.testCoverage()
                     }
                 }
             }
-
             stage('SonarQube Analysis') {
                 steps {
                     script {
-                        echo "Validando configuración de SonarQube:"
-                        sh 'which sonar-scanner'
-                        echo "Iniciando análisis..."
                         lb_analisissonarqube.analisisSonar(env.GIT_BRANCH_1)
                     }
                 }
             }
         }
-
         post {
             always {
                 echo "Pipeline finalizado."
