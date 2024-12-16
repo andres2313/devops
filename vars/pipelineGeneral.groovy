@@ -18,14 +18,6 @@ def call(Map config) {
                 }
             }
 
-            stage('Instalacion') {
-                steps {
-                    script {
-                        lb_buildartefacto.install()
-                    }
-                }
-            }
-
             stage('Build') {
                 steps {
                     script {
@@ -50,7 +42,7 @@ def call(Map config) {
                 }
             }
         }
-        
+
         post {
             always {
                 echo "Pipeline finalizado."

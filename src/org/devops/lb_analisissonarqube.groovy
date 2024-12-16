@@ -1,6 +1,7 @@
 package org.devops
 
 def testCoverage() {
+    sh 'npm install'
     sh 'npm test'  
 }
 
