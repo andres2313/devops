@@ -18,7 +18,9 @@ def analisisSonar(gitName) {
                 -Dsonar.tests=src/__test__ \
                 -Dsonar.exclusions='/*.test.js' \
                 -Dsonar.testExecutionReportPaths=./test-report.xml \
-                -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info"
+                -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info \
+                -Dsonar.host.url=http://localhost:9000 
+                "
         }
     } else {
         error 'SonarQube Scanner not found'
