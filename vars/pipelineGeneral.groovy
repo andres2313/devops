@@ -18,10 +18,11 @@ def call(Map config) {
                 }
             }
 
-            stage ('mirar algo'){
+            stage ('Generacion de artefacto'){
                 steps {
-                    checkout scm
-                    sh 'ls -la'
+                    script{
+                    lb_buildartefacto.generateArtefact()
+                    }
                 }
             }
 
