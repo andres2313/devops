@@ -18,13 +18,6 @@ def call(Map config) {
                 }
             }
 
-            stage ('Generacion de artefacto'){
-                steps {
-                    script{
-                    lb_buildartefacto.generateArtefact()
-                    }
-                }
-            }
 
             stage('Correr el test para analisis en sonarqube') {
                 steps {
