@@ -19,7 +19,7 @@ def analisisSonar(gitName) {
                 -Dsonar.exclusions='/*.test.js' \
                 -Dsonar.testExecutionReportPaths=./test-report.xml \
                 -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info \
-                -Dsonar.host.url=http://localhost:9000 
+                -Dsonar.host.url=http://sonar:9000 
                 "
         }
     } else {
