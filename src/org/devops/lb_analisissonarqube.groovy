@@ -3,7 +3,6 @@ package org.devops
 def testCoverage() {
     sh 'npm install'
     sh 'npm run build'
-    sh 'tar -czvf artefacto.tar.gz ./build'
     sh 'npm test'  
 }
 
