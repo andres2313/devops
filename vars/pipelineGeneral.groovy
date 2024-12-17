@@ -7,7 +7,8 @@ def call(Map config) {
     pipeline {
         agent any 
         tools {
-            nodejs 'NodeJS' 
+            nodejs 'NodeJS'
+            sonar-scanner 'sonar-scanner' 
         }
         stages {
             stage('Clonar repositorio') {
