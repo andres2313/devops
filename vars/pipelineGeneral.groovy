@@ -14,7 +14,10 @@ def call(Map config) {
             nodejs 'NodeJS' 
         }
 
-        stage('Extract Project Name') {
+        
+        stages {
+
+            stage('Extract Project Name') {
                 steps {
                     script {
                         def urlGitHub = sh(script: 'git config --get remote.origin.url', returnStdout: true).trim()
@@ -27,7 +30,7 @@ def call(Map config) {
                     }
                 }
             }
-        stages {
+            
             stage('Construccion de imagen') {
                 steps {
                     script {
