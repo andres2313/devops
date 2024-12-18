@@ -1,6 +1,6 @@
 package org.devops
 
-def AnalisisOwasp(projectGitName){
+def analisisOwasp(projectGitName){
 sh """ docker run --rm -v ProjectOwasp:/zap/wrk/:rw \
        --user root --network=${env.NameNetwork} \
        -t owasp/zap2docker-stable \
