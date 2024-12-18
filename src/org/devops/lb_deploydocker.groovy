@@ -6,6 +6,6 @@ def despliegueContenedor(projectGitName){
     sh "docker pull andreslugo/react-test-jenkisfile"
     sh """ docker run -d --name ${projectGitName} \
     --network=${env.NameNetwork} -p 5174:5174 \
-    --user root andres2313/${projectGitName}
+    --user root andreslugo/${projectGitName}
     """
 }
