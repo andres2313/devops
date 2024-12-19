@@ -4,10 +4,10 @@ def analisisOwasp(projectGitName){
     //Ejecutar el análisis OWASP con ZAP, asegurando volumen y variables correctas
     sh """ docker run --rm -v /path/to/local/ProjectOwasp:/zap/wrk/:rw \
           --user root --network=${env.NameNetwork} \
-          -t endasama96/zap2docker-stable \
+          -t endasama96/zap2docker-stable:latest \
            zap-full-scan.py \
           -t ${env.dominio} \
-           -r /zap/wrk/ProjectOwasp.html -I
+          -r /zap/wrk/ProjectOwasp.html -I
        """
 }
 //def analisisOwasp(projectGitName){
