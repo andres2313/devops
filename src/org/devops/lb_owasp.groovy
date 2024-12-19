@@ -7,7 +7,7 @@ def analisisOwasp(projectGitName){
           -t edansama96/zap2docker-stable \
            zap-webswing.sh \
           -t ${env.dominio} \
-          -r /zap/ProjectOwasp.html -I
+          -r ProjectOwasp.html -I
        """
 }
 //def analisisOwasp(projectGitName){
