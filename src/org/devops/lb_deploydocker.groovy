@@ -6,7 +6,7 @@ def despliegueContenedor(projectGitName){
     //sh "docker rm ${projectGitName}"
     
     // Pull de la imagen más reciente desde Docker Hub
-    sh "docker pull ${DOCKERHUB_USERNAME}/${projectGitName}:latest"
+    sh "docker pull andreslugo/${projectGitName}:latest"
 
     // Desplegar el contenedor en la red y puerto definidos
     sh """ docker run -d --name ${projectGitName} \
