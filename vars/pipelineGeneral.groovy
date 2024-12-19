@@ -34,7 +34,7 @@ def call(Map config) {
             stage('Construccion de imagen') {
                 steps {
                     script {
-                        lb_buildimagen.buildImageDocker()
+                        lb_buildimagen.buildImageDocker(env.projectGitName)
                     }
                 }
             }
