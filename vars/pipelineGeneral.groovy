@@ -59,7 +59,7 @@ def call(Map config) {
             stage('Analisis OWASP') {
                 steps {
                     script {
-                        lb_owasp.analisisOwasp(projectGitName)
+                        lb_owasp.analisisOwasp()
                     }
                 }
             }
