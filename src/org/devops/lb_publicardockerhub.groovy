@@ -7,5 +7,6 @@ def publicarImage(projectGitName){
         sh "docker login -u ${env.DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD}"
         sh "docker tag ${projectGitName} ${env.DOCKERHUB_USERNAME}/${projectGitName}:latest"
         sh "docker push ${env.DOCKERHUB_USERNAME}/${projectGitName}:latest"
+        sh "docker images"  // Para verificar las imágenes locales disponibles.
     }
 }
