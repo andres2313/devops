@@ -43,7 +43,7 @@ def call(Map config) {
             stage('Publicacion Docker Hub') {
                 steps {
                     script {
-                        lb_publicardockerhub.publicarImage()
+                        lb_publicardockerhub.publicarImage(projectGitName)
                     }
                 }
             }
@@ -51,7 +51,7 @@ def call(Map config) {
             stage('Despliegue imagen') {
                 steps {
                     script {
-                        lb_deploydocker.despliegueContenedor()
+                        lb_deploydocker.despliegueContenedor(projectGitName)
                     }
                 }
             }
@@ -59,7 +59,7 @@ def call(Map config) {
             stage('Analisis OWASP') {
                 steps {
                     script {
-                        lb_owasp.analisisOwasp()
+                        lb_owasp.analisisOwasp(projectGitName)
                     }
                 }
             }
