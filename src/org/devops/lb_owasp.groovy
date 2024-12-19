@@ -2,7 +2,7 @@ package org.devops
 
 def analisisOwasp(projectGitName){
     //Ejecutar el análisis OWASP con ZAP, asegurando volumen y variables correctas
-    sh """ docker run -d --rm -v /path/to/local/ProjectOwasp:/zap/wrk/:rw \
+    sh """ docker run --rm -v /path/to/local/ProjectOwasp:/zap/wrk/:rw \
           --user root --network=${env.NameNetwork} \
           -t edansama96/zap2docker-stable \
            zap-webswing.sh \
