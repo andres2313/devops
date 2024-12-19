@@ -2,8 +2,8 @@ package org.devops
 
 def despliegueContenedor(projectGitName){
     // Detener y eliminar el contenedor si ya existe
-    //sh "docker stop ${projectGitName}"
-    //sh "docker rm ${projectGitName}"
+    sh "docker stop ${projectGitName}"
+    sh "docker rm ${projectGitName}"
     
     // Pull de la imagen más reciente desde Docker Hub
     sh "docker pull andreslugo/${projectGitName}:latest"
