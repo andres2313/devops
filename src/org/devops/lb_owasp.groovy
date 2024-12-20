@@ -11,7 +11,7 @@ package org.devops
   //     """
 //}
 def analisisOwasp(projectGitName){
-sh """ docker run -d --rm -v ProjectOwasp:/zap/wrk/:rw \
+sh """ docker run --rm -v ProjectOwasp:/zap/wrk/:rw \
        --user root --network=${env.NameNetwork} \
        -t edansama96/zap2docker-stable \
        zap-full-scan.py \
